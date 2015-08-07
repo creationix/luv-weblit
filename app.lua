@@ -159,7 +159,7 @@ function server.start()
   end
   for i = 1, #bindings do
     local options = bindings[i]
-    createServer(options.host, options.port, function (rawRead, rawWrite, socket)
+    createServer(options, function (rawRead, rawWrite, socket)
       local tls = options.tls
       if tls then
         rawRead, rawWrite = tlsWrap(rawRead, rawWrite, {
